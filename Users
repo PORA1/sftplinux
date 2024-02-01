@@ -7,7 +7,7 @@
 
 # The below command creates user2, assigns the user to an External  group, makes shared their home directory and set sbin/nologin as shell(which will not allow the user to ssh and get shell access. 
 
-    useradd -g  Internal -d  /Shared -s /sbin/nologin user2
+    useradd -g  External -d  /Shared -s /sbin/nologin user2
     passwd user2
 
 #Verify that the users got created properly by below command.
