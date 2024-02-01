@@ -7,7 +7,7 @@ You work at company X which would want to have a shared folder with its clients.
 #Important 
 Follow the tutorial in this order: Read me-> Create access group -> Users -> Editing sshd -> Creating sftp Home Directory - > User Permissions. 
 Since the access is being shared to external parties Sftp should not be set by its defaults rather it should be restricted by chroot sftp jail. This means we will limit this users to only access a directory called "Shared".
-This tutorial considers your users are accessing the server from a Windows environment.  To test the success your users will have to use sftp clients/softwares to access the server. This can be gotten from below link: 
+This tutorial considers your users are accessing the server from a Windows environment.  To test the success your users will have to use sftp clients/software to access the server. This can be gotten from the below link: 
 
   https://www.thegeekstuff.com/2011/06/windows-sftp-scp-clients/
   
