@@ -13,19 +13,19 @@
 
   grep sftp /etc/ssh/sshd_config 
 
-#You want to restrict the groups on the chroot jail environment.
+#You want to restrict the external  group on the chroot jail environment.
 
-  tail /etc/ssh/sshd_config 
-  Match Group Internal
-  ChrootDirectory /Shared
-  ForceCommand internal-sftp
 
 tail /etc/ssh/sshd_config 
   Match Group External
-  ChrootDirectory /Shared
+  ChrootDirectory /Shared/u%
   ForceCommand internal-sftp
 
+service sshd restart
+
+
 # In the above: 
-              #Match Group Internal and External- This indicates the next lines will only be matched for users who belong to Internal and External groups. 
-              #ChrootDirectory /Shared- This is the path that will be used for chroot after the user has successfully connected via sftp. 
-              @ForceCommand internal-sftp- this forces the execution of the internal-sftp and ignores any command that are mentioned in the /ssh/rc file.
+              #Match Group External- This indicates the next lines will only be matched for users who belong to Internal and External groups. 
+              #ChrootDirectory /Shared/%u - This is the path that will be used for chroot after the user is authenticated.%u indicates the user. So for User2, this will be /Shared/User2.
+              #ForceCommand internal-sftp- this forces the execution of the internal-sftp and ignores any commands that are mentioned in the /ssh/rc file.
+              #service sshd restart - restarts the ssh service so that the changed settings can pick up. 
