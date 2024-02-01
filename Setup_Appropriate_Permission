@@ -1,8 +1,14 @@
-# With a priviledged or user account we have to set the user rights for the Shared folder as below: 
+# With a priviledged or user account we have to set the user ownership for the Shared folder as below: 
   chown root:root /Shared 
+  chmod 731 /Shared
 
-# We then proceed to setup the rights for the individual folder as below: 
+# We then proceed to set the ownership for the individual folder as below: 
   chown root:external /Shared/user2
+  chmod 731 /Shared/user2
 
-#Within user2 incoming directory we can set the file with below rights allowing users belonging to internal group access the file ane write, read or execute within the folder. 
-  chown user2:Internal /Shared/user2/Incoming 
+#Within the user2 directory we can set the sub-directories with the below ownership. 
+
+  chown user2:Internal /Shared/user2/incoming 
+  chown user2:Internal /Shared/user2/outgoing
+  chmod 771 /Shared/user2/incoming
+  chmod771 /Shared/user2/outgoing
