@@ -1,0 +1,17 @@
+#Below we create  or edit existing users from a privileged or root account. The users should be restricted to a controlled (chroot) environment and should not be allowed to perform ssh (login) to the server. 
+# As per our scenario we need two users one belonging to the Internal group and the other to the External group. 
+# The below command creates user1, assigns the user to an Internal group, makes shared their home directory and set sbin/nologin as shell(which will not allow the user to ssh and get shell access. The second command passwd allows the setting up of the user password. 
+
+    useradd -g  Internal -d  /Shared -s /sbin/nologin user1
+    passwd user1
+
+# The below command creates user2, assigns the user to an External  group, makes shared their home directory and set sbin/nologin as shell(which will not allow the user to ssh and get shell access. 
+
+    useradd -g  Internal -d  /Shared -s /sbin/nologin user2
+    passwd user2
+
+#Verify that the users got created properly by below command.
+    grep user1 /etc/passwd
+    user1:x:1061:1061::/Shared:/sbin/nologin 
+
+#change the command above to user 2 to verify that the user was created correctly. The number 1061 on the user details above might be different on your system. This should not raise alarm.
