@@ -15,3 +15,9 @@
     user1:x:1061:1061::/Shared:/sbin/nologin 
 
 #change the command above to user 2 to verify that the user was created correctly. The number 1061 on the user details above might be different on your system. This should not raise alarm.
+
+#To edit an  existing user and restrict them from login in. Do below:
+
+    usermod -g internal -d /shared -s /sbin/nologin user3
+
+# The command above adds user 3 to internal group and restricts their home directory to the shared folder. 
