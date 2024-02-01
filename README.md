@@ -6,3 +6,7 @@ You work at company X which would want to have a shared folder with its clients.
 
 #Important 
 Since the access is being shared to external parties Sftp should not be set by its defaults rather it should be restricted by chroot sftp jail. This means we will limit this users to only access a directory called "Shared".
+This tutorial considers your users are accessing the server from a Windows environment.  To test the success your users will have to use sftp clients/softwares to access the server. This can be gotten from below link: 
+
+  https://www.thegeekstuff.com/2011/06/windows-sftp-scp-clients/
+  
