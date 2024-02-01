@@ -1,0 +1,31 @@
+# from a priviledged or root account modify the /etc/ssh/sshd_config file.
+
+      vi /etc/ssh/sshd_config 
+#Comment out the following line by adding # symbol before it. 
+
+    #Subsystem    sftp   /usr/libexec/openssh/sftp-server 
+
+#Next add the following line to the /etc/ssh/sshd_config file
+
+    Subsystem  sftp    internal-sftp
+
+#Save the changes and verify the changes by below command:
+
+  grep sftp /etc/ssh/sshd_config 
+
+#You want to restrict the groups on the chroot jail environment.
+
+  tail /etc/ssh/sshd_config 
+  Match Group Internal
+  ChrootDirectory /Shared
+  ForceCommand internal-sftp
+
+tail /etc/ssh/sshd_config 
+  Match Group External
+  ChrootDirectory /Shared
+  ForceCommand internal-sftp
+
+# In the above: 
+              #Match Group Internal and External- This indicates the next lines will only be matched for users who belong to Internal and External groups. 
+              #ChrootDirectory /Shared- This is the path that will be used for chroot after the user has successfully connected via sftp. 
+              @ForceCommand internal-sftp- this forces the execution of the internal-sftp and ignores any command that are mentioned in the /ssh/rc file.
