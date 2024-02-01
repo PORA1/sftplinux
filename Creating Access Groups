@@ -1,0 +1,4 @@
+# The steps below should be carried out with an account that has root priviledges  and if not kindly start each command with sudo to invoke super user mode. 
+# Create 2 groups namely Internal and External with below commands:
+      groupadd Internal 
+      groupadd External 
