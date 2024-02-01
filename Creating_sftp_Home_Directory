@@ -1,1 +1,12 @@
-#
+# Since we have specified /Shared as ChrootDirectory in   the file Editing_sshd file. We create this directory which will be equivalent to a users typical /home directory. 
+
+  mkdir /sftp 
+#Now under /Shared, we create the individual directories for users who are part of the External group. i.e the users will be allowed to perfom sftp into their individual folders restricted by the chroot environment. 
+
+  mkdir /Shared/user2
+
+# So under /Shared/user2 create any subdirectory that you like the user to see. For example, we can have an incoming and outgoing folder where the external team can drop files into the incoming folder(/Shared/user2/incoming) and 
+#the internal team can drop files on the outgoing folder (/Shared/user2/outgoing) 
+
+  mkdir /Shared/user2/incoming
+  mkdir /Shared/user2/outgoing
